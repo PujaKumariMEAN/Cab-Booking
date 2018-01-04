@@ -1,0 +1,125 @@
+<script src = "public/js/timepicki.js"></script>
+<script>
+$(document).ready(function(){
+  $('input.timepicker').click(function(){
+     $('#start').timepicki();
+     $('#end').timepicki();
+     $('#ustart').timepicki();
+     $('#uend').timepicki();
+  });
+});
+</script>
+<div class = "container">
+   <div class = "row">
+    <div class = "col-md-12 gap">
+     <h3>Tariff Plans</h3>
+
+  <button type ="button" class = "btn btn-success" data-toggle="modal" data-target ="#myModal"><span class = "glyphicon glyphicon-plus"></span>
+    Add New Tariff Plans</button>
+
+    <div class = "modal fade" id="myModal" role="dialog">
+      <div class = "modal-dialog">
+        <div class = "modal-content">
+          <div class = "modal-header">
+            <button type ="button" class = "close" data-dismiss = "modal">&times;</button>
+            <h4 class = "modal-title">Add Tariff Plans</h4>
+          </div>
+
+          <div class = "modal-body">
+            <form>
+                <div class = " form-group">
+                  <select class = "form-control" ng-model = "Tariff.Cab">
+                      <option ng-disabled = "true">--Select an option--</option>
+                      <option>Mini</option>
+                      <option>Micro</option>
+                      <option>Prime SUV</option>
+                      <option>Prime Sedan</option>
+                    </select>
+                  </div>
+                  <div class = "form-group">
+                  <input type = "number" placeholder = "normal rate/km" ng-model = "Tariff.Nrate" class = "form-control">
+                  </div>
+                  <div class = "form-group">
+                  <input type = "number" placeholder = "peak rate/km" ng-model = "Tariff.Prate" class = "form-control">
+                  </div>
+                  <div class = "form-group">
+                  <input type = "text" id = "start" placeholder = "Starting peak time" ng-model = "Tariff.Speak" class = "form-control timepicker">
+                  </div>
+                  <div class = "form-group">
+                  <input type = "text" id = "end" placeholder = "Ending peak time" ng-model = "Tariff.Epeak"  class = "form-control timepicker">
+                  </div>
+          </form>
+         </div>
+
+          <div class = "modal-footer">
+            <button type = "button" class = "btn btn-info" ng-click = "SaveTariff()" onclick="window.location.href='/#/tariff'">Save</button>
+            <button type = "button" class = "btn btn-default" data-dismiss = "modal">Close</button>
+          </div>
+        </div> <!--end content-->
+      </div> <!--end dialog-->
+    </div> <!--end modal-->
+  </div> <!--end col-12-->
+  </div> <!--end row-->
+  </div> <!--end container-->
+
+  <div class = "container">
+   <div class = "row">
+    <div class = "col-md-12 gap">
+      <table border="1">
+        <tr>
+          <th>Cabs Type</th>
+          <th>Normal Hour Rate/km</th>
+          <th>Peak Hour Rate/km</th>
+          <th>Start Peak Time</th>
+          <th>End Peak Time</th>
+          <th>Edit</th>
+          <th>Delete</th>
+      </tr>
+      <tr ng-repeat = "t in tDetails"  >
+        <td>{{t.CabType}}</td>
+        <td>Rs {{t.NormalRate}}</td>
+        <td>Rs {{t.PeakRate}}</td>
+        <td>{{t.StartPeak}}</td>
+        <td>{{t.EndPeak}}</td>
+        <td><button type = "button" class = "btn btn-warning" data-toggle="modal" data-target ="#updateModal" ng-click = "get(t.CabType)"><span class = "glyphicon glyphicon-edit"></span></button></td>
+        <td><button type = "button" class = "btn btn-danger" ng-click = "DeleteRecord(t._id)"><span class = "glyphicon glyphicon-trash"></span></button></td>
+      </tr>
+     </table>
+     <div class = "modal fade" id="updateModal" role="dialog">
+       <div class = "modal-dialog">
+         <div class = "modal-content">
+           <div class = "modal-header">
+             <button type ="button" class = "close" data-dismiss = "modal">&times;</button>
+             <h4 class = "modal-title">Update Tariff Plans</h4>
+           </div>
+
+           <div class = "modal-body">
+             <form>
+                 <div class = " form-group">
+                    <input type = "text" ng-model="t.CabType" class = "form-control" ng-disabled="true">
+                   </div>
+                   <div class = "form-group">
+                   <input type = "number" ng-model="t.NormalRate" placeholder = "normal rate/km" class = "form-control">
+                   </div>
+                   <div class = "form-group">
+                   <input type = "number" ng-model="t.PeakRate" placeholder = "peak rate/km" class = "form-control">
+                   </div>
+                   <div class = "form-group">
+                   <input type = "text" id="ustart" ng-model="t.StartPeak" placeholder = "Starting peak time" class = "form-control timepicker">
+                   </div>
+                   <div class = "form-group">
+                   <input type = "text" id="uend" ng-model="t.EndPeak" placeholder = "Ending peak time" class = "form-control timepicker">
+                   </div>
+           </form>
+          </div>
+
+           <div class = "modal-footer">
+             <button type = "button" class = "btn btn-success" onclick="window.location.href='/#/tariff'" ng-click = "UpdateRecord(t._id)">Update</button> <!--onclick="window.location.href='/#/tariff'"-->
+             <button type = "button" class = "btn btn-default" data-dismiss = "modal">Close</button>
+           </div>
+         </div> <!--end content-->
+       </div> <!--end dialog-->
+     </div> <!--end modal-->
+  </div> <!--end col-12-->
+  </div> <!--end row-->
+  </div> <!--end container-->

@@ -1,0 +1,41 @@
+ <nav class = "navbar navbar-inverse">
+  <div class = "container">
+    <div class = "navbar-header">
+      <button type = "button" class = "navbar-toggle" data-toggle = "collapse" data-target = "#myNavbar">
+        <span class = "icon-bar"></span>
+        <span class = "icon-bar"></span>
+        <span class = "icon-bar"></span>
+      </button>
+      <a class = "navbar-brand" href="/">MyCab</a>
+    </div> <!--end nav-header-->
+    <div class = "collapse navbar-collapse" id = "myNavbar">
+      <ul class = "nav navbar-nav">
+        <li class = "active"><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+
+        <li class="dropdown" ng-hide="admin">
+          <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li ng-hide="tariff"><a href="/tariff"><span class = "glyphicon glyphicon-plus"></span> Tariff Plans</a></li>
+            <li ng-hide="cabdriverdetail"><a href="/cabdriverdetail"><span class = "glyphicon glyphicon-plus"></span> Cab & Driver Detail</a></li>
+          </ul>
+        </li>
+
+        <li ng-hide="booking"><a href="/booking">Book Cab</a></li>
+        <li ng-hide="dribooking"><a href="/dribooking">Bookings</a></li>
+        <!-- <li ng-hide="unauth" hidden><a href="/unauth">Unauthorized</a></li> -->
+
+        <!-- <li><a href=""></a></li> -->
+      </ul>
+
+      <ul class = "nav navbar-nav navbar-right">
+        <li ng-hide="sign"><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li ng-hide="user" id="cust"><b>Welcome</b><span class="badge">{{custname}}</span></li>
+        <li ng-hide="changepassword"><a href="/changepassword"><span class = "glyphicon glyphicon-bell"></span></a></li>
+        <li ng-hide="login"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li ng-hide="logout"><a href="/logout">Logout</a></li>
+
+      </ul>
+    </div> <!--end col-nav-->
+
+  </div> <!--end container-->
+</nav>

@@ -1,0 +1,148 @@
+/*Home Page*/
+.wrapper {
+   width: 100%;
+}
+
+.detail {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.service {
+  text-align: center;
+}
+
+.panel-body {
+  font-family: serif;
+}
+
+.panel-body button {
+  width: 100%;
+}
+
+h4{
+  text-align: center;
+  text-transform: capitalize;
+  /*text-shadow: 2px 2px 2px gray;*/
+}
+
+/*Navbar*/
+.navbar {
+  box-shadow: 3px 3px 2px gray;
+}
+
+.nav li {
+  font-weight: bold;
+}
+
+
+/*Tariff Page*/
+.gap {
+    padding: 15px;
+  }
+
+.modal-body .input-group input {
+    /*width: 220%;*/
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+th {
+  padding: 15px;
+  text-align: center;
+}
+
+td {
+  text-align: center;
+  padding: 5px;
+}
+
+#cust {
+  color: white;
+  hover: none;
+}
+
+/*Register Page*/
+.reg {
+  padding: 5px;
+}
+
+/*Login Page*/
+.login {
+  padding: 5px;
+}
+
+/*Book Your Ride*/
+#map {
+  height: 400px;
+  width: 100%;
+      }
+
+.controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-siz
+        ing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            }
+
+#origin-input,
+#destination-input, #options {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 100%;
+
+          }
+
+#origin-input:focus,
+#destination-input:focus {
+        border-color: #4d90fe;
+            }
+
+#options {
+  box-shadow: 0px 2px 2px lightgray;
+}
+
+.gap{
+  padding: 15px;
+}
+
+.dtf {
+  text-align: center;
+  border: 1px solid blue;
+}
+
+/*#mode-selector {
+         color: #fff;
+         background-color: #4d90fe;
+         margin-left: 12px;
+         padding: 5px 11px 0px 11px;
+                }
+
+#mode-selector label {
+          font-family: Roboto;
+          font-size: 13px;
+          font-weight: 300;
+                }*/
+
+/*Driver Booking Details  */
+#drimap {
+  height: 400px;
+  width: 100%;
+      }
+
+.dri {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+}

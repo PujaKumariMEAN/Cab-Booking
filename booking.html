@@ -1,0 +1,126 @@
+<script src = "public/js/timepicki.js"></script>
+<script>
+$(document).ready(function(){
+  $('input.timepicker').click(function(){
+     $('#time').timepicki();
+  });
+  $( "#date" ).datepicker({
+    // beforeShowDay: $.datepicker.noWeekends
+    minDate: 0,maxDate: 1
+  });
+});
+</script>
+
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-12">
+      <div class = "col-md-5">
+
+        <div class = "form-group gap">
+           <label for="pickup">Your Pick up Location</label>
+           <input id="origin-input" class="form-control controls" type="text" ng-model="User.Origin" placeholder="Enter an origin location">
+           <input id="lat" name="lat" value="28.5733" type="hidden"> <!-- type="hidden"-->
+           <input id="long" name="long" value="77.2219" type="hidden">
+        </div>
+
+        <div class = "form-group gap">
+           <label for="destination">Your Destination Location</label>
+           <input id="destination-input" class="form-control controls" type="text" ng-model="User.Destination" placeholder="Enter a destination location">
+        </div>
+
+       <div class = " form-group gap">
+         <label for="cab">Choose Your Cab</label>
+         <select class = "form-control" id = "options" ng-model="User.Cab">
+             <option ng-disabled = "true">--Select an option--</option>
+             <option>Mini</option>
+             <option>Micro</option>
+             <option>Prime SUV</option>
+             <option>Prime Sedan</option>
+           </select>
+         </div>
+
+         <div class="form-group gap">
+           <button type="button" name="button" id="mybtn" class = "btn btn-success">Get Estimate</button>
+         </div>
+
+         <div class="form-group gap">
+             <div class="col-md-12" id="panel_details">
+               <div class="col-md-4 dtf">
+                 <p>
+                    <label for="distance">Total Distance</label>
+                    <span id="distance"></span>
+                 </p>
+               </div>
+               <div class="col-md-4 dtf">
+                 <p>
+                   <label for="time">Total Time</label>
+                   <span id="time"></span>
+                 </p>
+               </div>
+               <div class="col-md-4 dtf">
+                 <p>
+                   <label for="fare">Total Fare</label>
+                   <span id="fare"></span>
+                 </p>
+               </div>
+             </div>
+        </div>
+
+        <div class = "form-group gap">
+            <button type = "button" class = "btn btn-success" id="ridenow">Ride Now</button>
+            <button type = "button" class = "btn btn-warning" data-toggle = "modal" data-target= "#myModal">Ride Later</button>
+        </div>
+
+        <div class = "modal fade" id="myModal" role="dialog">
+          <div class = "modal-dialog">
+            <div class = "modal-content">
+              <div class = "modal-header">
+                <button type ="button" class = "close" data-dismiss = "modal">&times;</button>
+                <h4 class = "modal-title">Book For Next Ride</h4>
+              </div>
+
+              <div class = "modal-body">
+                <form>
+                  <div class="form-group">
+                    <input type = "type" id = "date" class = "input-control"><span class = "glyphicon glyphicon-calendar"></span>
+                  </div>
+                  <div class="form-group">
+                    <input type = "type" id = "time" class = "input-control timepicker">
+                  </div>
+                  <div class="form-group">
+                    <label for="Destination">Your Destination</label>
+                    <input type = "text" id = "des" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="pickup">Your Pickup</label>
+                    <input type = "text" id = "pick" class="form-control">
+                  </div>
+                    <div class = " form-group">
+                      <select class = "form-control">
+                          <option ng-disabled = "true">--Select an option--</option>
+                          <option>Mini</option>
+                          <option>Micro</option>
+                          <option>Prime SUV</option>
+                          <option>Prime Sedan</option>
+                        </select>
+                      </div>
+
+              </form>
+             </div>
+
+              <div class = "modal-footer">
+                <button type = "button" class = "btn btn-primary" onclick="window.location.href='/#/booking'">Confirm</button>
+                <button type = "button" class = "btn btn-default" data-dismiss = "modal">Close</button>
+              </div>
+            </div> <!--end content-->
+          </div> <!--end dialog-->
+        </div> <!--end modal-->
+      </div><!--end col-5-->
+
+      <div class = "col-md-7">
+        <div ng-init="initMap()" id = "map"> </div>
+      </div>
+     </div> <!--end col-7-->
+    </div> <!--end col-12-->
+  </div> <!--end row-->
+</div> <!--end container-->

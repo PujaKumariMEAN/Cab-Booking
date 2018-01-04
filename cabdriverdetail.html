@@ -1,0 +1,136 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-12">
+      <div class = "col-md-1">
+      </div>
+      <div class = "col-md-6">
+        <form name = "myForm" ng-submit = "submitForm(myForm.$valid)" novalidate>
+          <h4>Driver Detail</h4>
+        <div class = "form-group">
+          <input type = "text" class = "form-control" name="FirstName" ng-minlength="4" ng-maxlength = "20" ng-model = "Driver.FirstName" placeholder = "FirstName" required>
+           <p ng-show="myForm.FirstName.$invalid && !myForm.FirstName.$pristine" class="help-block">Please enter a valid First Name.</p>
+        </div>
+        <div class = "form-group">
+          <input type = "text" class = "form-control" name ="LastName" ng-minlength="4" ng-maxlength = "20" ng-model = "Driver.LastName" placeholder = "LastName" required>
+           <p ng-show="myForm.LastName.$invalid && !myForm.LastName.$pristine" class="help-block">Please enter a valid Last Name.</p>
+        </div>
+        <div class = "form-group">
+          <textarea name = "Address" class = "form-control" ng-model = "Driver.Address" ng-minlength="8" ng-maxlength = "40" maxlength = "40" placeholder = "Address" required></textarea>
+           <p ng-show="myForm.Address.$invalid && !myForm.Address.$pristine" class="help-block">Please enter a valid address.</p>
+        </div>
+        <div class = "form-group">
+          <input type = "number" class = "form-control" name = "Contact" ng-model = "Driver.Contact" ng-minlength="10" ng-maxlength = "12" maxlength = "12" placeholder = "Contact No" required>
+            <p ng-show="myForm.Contact.$invalid && !myForm.Contact.$pristine" class="help-block">Please enter a valid ContactNo. </p>
+        </div>
+        <div class = "form-group">
+          <input type = "email" class = "form-control" name = "Email" ng-model = "Driver.Email" placeholder = "example@driver.com" required>
+            <p ng-show="myForm.Email.$invalid && !myForm.Email.$pristine" class="help-block">Please enter a valid email.</p>
+        </div>
+        <div class = "form-group">
+          <input type = "text" class = "form-control" name = "License" ng-model = "Driver.License" placeholder = "License No" required>
+        </div>
+
+        <h4>Cab Details</h4>
+        <div class = "form-group">
+          <select class = "form-control" ng-model = "Driver.CabType" name = "CabType" required>
+            <option ng-disabled = "true">--Select an option--</option>
+            <option>Mini</option>
+            <option>Micro</option>
+            <option>Prime SUV</option>
+            <option>Prime Sedan</option>
+          </select>
+        </div>
+        <div class = "form-group">
+          <input type = "text" class = "form-control" name = "CabNo" ng-model = "Driver.CabNo" placeholder = "Cab No" required>
+        </div>
+        <div class = "form-group">
+          <input type = "text" class = "form-control" name = "CabModel" ng-model = "Driver.CabModel" placeholder = "Cab Model" required>
+        </div>
+        <div class = "form-group">
+          <input type = "text" class = "form-control" name="RegNo" ng-model = "Driver.RegNo" placeholder = "Registration No" required>
+        </div>
+      <div class = "form-group">
+        <button type = "button" class = "btn btn-primary" ng-disabled="myForm.$invalid" ng-click = "SaveDetails()">Save</button>
+      </div>
+      </form>
+      </div> <!--end col-7-->
+      <!-- <div class = "col-md-1"></div> -->
+      <div class = "col-md-5">
+        <table border = "1">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact No</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          <tr ng-repeat = "c in cDetails">
+            <td>{{c.FirstName}} {{c.LastName}}</td>
+            <td>{{c.Email}}</td>
+            <td>{{c.Contact}}</td>
+            <td><button type = "button" class = "btn btn-warning" data-toggle = "modal" data-target = "#myModal" ng-click = "get(c.Email)"><span class = "glyphicon glyphicon-edit"></span></button></td>
+            <td><button type = "button" class = "btn btn-danger" ng-click = "DeleteDetails(c._id)"><span class = "glyphicon glyphicon-trash"></span></button></td>
+          </tr>
+        </table>
+        <div class="modal fade" id = "myModal">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class = "modal-header">
+                <button type = "button" class = "close" data-dismiss = "modal">&times;</button>
+                <h4 class = "modal-title">Update Details</h4>
+              </div> <!--end header-->
+              <div class="modal-body">
+                <div id = "driver">
+                  <h4>Driver Detail</h4>
+                <div class = "form-group">
+                  <input type = "text" class = "form-control" ng-model = "c.FirstName" placeholder = "FirstName" ng-disabled = "true">
+                </div>
+                <div class = "form-group">
+                  <input type = "text" class = "form-control" ng-model = "c.LastName" placeholder = "LastName" ng-disabled = "true">
+                </div>
+                <div class = "form-group">
+                  <textarea name = "address" class = "form-control" ng-model = "c.Address" placeholder = "Address"></textarea>
+                </div>
+                <div class = "form-group">
+                  <input type = "number" class = "form-control" ng-model = "c.Contact" placeholder = "Contact No">
+                </div>
+                <div class = "form-group">
+                  <input type = "email" class = "form-control" ng-model = "c.Email" placeholder = "example@driver.com">
+                </div>
+                <div class = "form-group">
+                  <input type = "text" class = "form-control" ng-model = "c.License" placeholder = "License No" ng-disabled = "true">
+                </div>
+              </div> <!--end driver-->
+
+              <div id = "cab">
+                <h4>Cab Details</h4>
+                <div class = "form-group">
+                  <select class = "form-control" ng-model = "c.CabType">
+                    <option>Mini</option>
+                    <option>Micro</option>
+                    <option>Prime SUV</option>
+                    <option>Prime Sedan</option>
+                  </select>
+                </div>
+                <div class = "form-group">
+                  <input type = "text" class = "form-control" ng-model = "c.CabNo" placeholder = "Cab No">
+                </div>
+                <div class = "form-group">
+                  <input type = "text" class = "form-control" ng-model = "c.CabModel" placeholder = "Cab Model">
+                </div>
+                <div class = "form-group">
+                  <input type = "text" class = "form-control" ng-model = "c.RegNo" placeholder = "Registration No">
+                </div>
+              </div> <!--end cab-->
+              </div> <!--end modal-body-->
+              <div class="modal-footer">
+                <button type="button" class = "btn btn-success" ng-click = "UpdateDetails(c._id)" onclick="window.location.href='/#/cabdriverdetail'">Update</button>
+                <button type = "button" class = "btn btn-default" data-dismiss = "modal">Close</button>
+              </div>
+            </div> <!--end content-->
+          </div> <!--end modal-lg-->
+        </div> <!--end myModal-->
+      </div> <!--end col-5-->
+    </div> <!--end col-12-->
+  </div> <!--end row-->
+</div> <!--end container-->
